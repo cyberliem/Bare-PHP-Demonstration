@@ -1,0 +1,71 @@
+.halfthumbnail {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
+.thumbheadtruncate
+{   width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    margin-bottom: 4px;
+    padding-bottom: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.thumbnail {
+    
+}
+
+.search-bar {
+   margin-bottom: 10px;
+   float: right;
+   
+}
+
+.thumbnailImg img{
+height:220px;
+min-height: 50%;
+max-height: 100%;
+max-width: 100%;
+margin: auto;
+display: block;
+}
+
+.thumbtruncate {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pagination-block {
+  margin-left:auto;
+  margin-right:auto;
+  align-items: center;
+  justify-content: center;
+}
+
+table.fixed td:nth-of-type(1) {width:30%;}/*Setting the width of column 1.*/
+table.fixed td:nth-of-type(2) {width:15%;}/*Setting the width of column 2.*/
+table.fixed td:nth-of-type(3) {width:15%;}/*Setting the width of column 3.*/
+table.fixed td:nth-of-type(4) {width:10%;}
+table.fixed td:nth-of-type(5) {width:10%;}
+table.fixed td:nth-of-type(6) {width:10%;}
+table.fixed td:nth-of-type(4) {width:10%;}
+
+.form-inside {
+    padding-top:7px;
+}
+
+.item-Title {
+    margin-left:25%;
+    margin-right:25%;
+    
+}
+
+.filter {
+padding-bottom: 7px;
+}
