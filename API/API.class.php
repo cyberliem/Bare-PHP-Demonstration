@@ -89,6 +89,17 @@ abstract class API {
         return($query->getEvents());
     }
     
+    private function viewVenue($args) {
+        $query=new DBConnect($args);
+        return($query->getVenues());
+    }
+    
+      private function viewCat($args) {
+        $query=new DBConnect($args);
+        return($query->getCats());
+    }
+    
+    
     public function processAPI(){
         //check if endpoint is a valid method
         if (method_exists($this, $this->endpoint)) {

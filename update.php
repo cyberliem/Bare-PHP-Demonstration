@@ -10,7 +10,7 @@
    
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
-
+session_start();
 include('includes/header.html');
 
 require_once('API/callAPI.php');

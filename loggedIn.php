@@ -1,9 +1,8 @@
 <?php
 //reuse header
+session_start();
 include('includes/header.html');
 
-//initiate 
-session_start();
 echo'<div class="alert alert-success">
             <strong>Success!</strong> Hello '.$_SESSION['userName'] .', You has logged in successfully.
           </div>';

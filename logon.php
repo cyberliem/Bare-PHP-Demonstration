@@ -1,31 +1,22 @@
 <?php
+//initiate 
+session_start();
 //reuse header
 include('includes/header.html');
 
-//initiate 
-echo '<form action="logIn.php" class="form-horizontal" method="Post">
-      <fieldset>
-        <legend>Login</legend>
-		<div class="form-group">
-            <label class="col-md-4 control-label" for="username">User name</label>  
-            <div class="col-md-4">
-                <input id="username" name="username" type="text" class="form-control input-md">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="pass">Password</label>  
-            <div class="col-md-4">
-                <input id="pass" name="pass" type="text" class="form-control input-md">
-            </div>
-        </div>
-        
-        <div class="form-group">
-			<label class="col-md-4 control-label" for="submit"></label>
-			<div class="col-md-4">
-				<button id="submit" name="submit" class="btn btn-primary">Log in</button>
-			</div>
-		</div>
-      </fieldset>
-      </form>';
+
+if (isset($_SESSION["userName"])) {
+    echo'<div class="alert alert-warning">
+        <strong>You already logged in</strong> Please log out first.
+        </div>';
+}
+else {
+    include('includes/logon.html');
+    if (isset($_GET["error"])) {
+        echo'<div class="alert alert-danger">
+            <strong>Invalid login details</strong> Please check your username/ password.
+            </div>';
+    }
+}    
 echo '</div> </div>';
 include('includes/footer.html');

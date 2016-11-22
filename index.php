@@ -1,13 +1,10 @@
     <!DOCTYPE html>
 <?php
 require_once('API/callAPI.php');
+session_start();
 include('includes/header.html');
 ini_set('display_errors', 1);
-//set total of items to display:
 
-
-//Start session to store any API called
-session_start();
 if (isset($_SESSION['previous'])) {
    if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
 	unset($_SESSION['items']);
