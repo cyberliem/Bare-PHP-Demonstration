@@ -13,10 +13,10 @@ session_start();
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-include('includes/header.html');
+include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
 
-require_once('API/callAPI.php');
-require_once('admin/ValidateInput.php');
+require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
+require_once($_SERVER["DOCUMENT_ROOT"] .'/admin/validateInput.php');
 
 if (!isset($_GET['itemID'])) {
     echo "<h3> This item is not on our database </h3>";
@@ -114,6 +114,6 @@ else {
         </form>';
 }
     echo '</div> </div>';        
-    include ($_SERVER['SERVER_NAME'].'/includes/footer.html');
+    include ($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
 ?>  
     

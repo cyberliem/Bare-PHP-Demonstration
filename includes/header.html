@@ -11,8 +11,8 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>The greatest bare PHP Demonstration</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
   </head>
   <body>
@@ -42,13 +42,13 @@ and open the template in the editor.
                             <?php if (!isset($_SESSION['userName'])) {
                                 echo '
                                     <li>
-                                        <a href="/logon.php">Log in</a>
+                                        <a href="/logonModules/logon.php">Log in</a>
                                     </li>';
                                 }
                                 else {
                                 echo '
                                     <li>
-                                        <a href="/logout.php">Log out</a>
+                                        <a href="/logonModules/logout.php">Log out</a>
                                     </li>';
                                 }
                                     

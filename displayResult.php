@@ -76,7 +76,7 @@ while (($i<$itemDisplay) && ($j<count($items))) {
     $item=$items[$j];    
     
     $cellLink='/viewItem.php?itemID='.$item["eventID"];
-    $editLink='/editItem.php?itemID='.$item["eventID"];
+    $editLink='/admin/editItem.php?itemID='.$item["eventID"];
 
     echo'<tr>
          
