@@ -12,6 +12,7 @@ $rowDisplay=4;
 //start blocks of thumbnails
 //start blocks of thumbnails
 $nItems=0;
+//echo '<pre>' . print_r(get_defined_vars(), true) . '</pre>';
 for ($i=0; $i<count($items); $i++) {
 	if (!isset($items[$i]["display"])) {
 		$items[$i]["display"]=TRUE;

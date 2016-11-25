@@ -81,8 +81,6 @@ else if ((isset($_GET["filter"])) &&($_GET["filter"]==1)) {
 			
 		$_SESSION["items"]=$items;
 		
-		
-	
 		include('includes/filter.html');
 		include('displayResult.php');
 		}	

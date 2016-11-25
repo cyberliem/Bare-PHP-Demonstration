@@ -25,12 +25,13 @@ if (!isset($_SESSION["userName"])) {
     
 }
 else {
-	if (empty($_SESSION["item"])) {
+	if (empty($_SESSION["editItem"])) {
 			$items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
 			$item=$items[0];
 		}
     else {
-		$item=$_SESSION["item"]; 
+		$item=$_SESSION["editItem"]; 
+		if (!empty($_SESSION["errors"]));
 		}
     $venues=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue');
     $cats=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat');
@@ -65,9 +66,9 @@ else {
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Description"> Event End Date </label>  
+                        <label class="col-md-2 control-label" for="eventEndDate"> Event End Date </label>  
                         <div class="col-md-7">
-                            <input id="eventEndDate" name="eventStartDate" type="date" value="'.$item["eventEndDate"].'" class="form-control input-md">
+                            <input id="eventEndDate" name="eventEndDate" type="date" value="'.$item["eventEndDate"].'" class="form-control input-md">
                         </div>
                     </div>
                     
@@ -83,21 +84,32 @@ else {
                       <div class="col-md-7">
                         <select id="venue" name="venue" value="'.$item["venueID"].'" class="form-control">';
                         foreach ($venues as $venue) {
-                            
-                            echo '<option value="'.$venue["venueID"].'">'.$venue["venueName"].'</option>';
+                            if ($venue["venueID"]==$item["venueID"]) {
+								$selected="selected";
+								}
+							else {
+								$selected="";
+								}	
+                            echo '<option '.$selected. ' value="'.$venue["venueID"].'">'.$venue["venueName"].'</option>';
                         }          
                        echo '  
                         </select>
                       </div>
                     </div>
                     
+                 
                     <div class="form-group">
-                      <label class="col-md-2 control-label" for="venue">Category</label>
+                      <label class="col-md-2 control-label" for="category">Category</label>
                       <div class="col-md-7">
-                        <select id="venue" name="venue" value="'.$item["catID"].'" class="form-control">';
+                        <select id="category" name="category" value="'.$item["catID"].'" class="form-control">';
                         foreach ($cats as $cat) {
-                            
-                            echo '<option value="'.$cat["catID"].'">'.$cat["catDesc"].'</option>';
+                            if ($cat["catID"]==$item["catID"]) {
+								$selected="selected";
+								}
+							else {
+								$selected="";
+								}	
+                            echo '<option '.$selected.' value="'.$cat["catID"].'">'.$cat["catDesc"].'</option>';
                         }          
                        echo '  
                         </select>

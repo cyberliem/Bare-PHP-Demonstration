@@ -11,6 +11,9 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 session_start();
+if (empty($_SESSION["userName"])) {
+	die("You shouldn't be here");
+	}
 include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
 
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
@@ -18,18 +21,24 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/API/cleanInput.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/includes/DBConnect.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/admin/validateInput.php');
 $errors=array();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	//filter 
-	$request=(filter_input_array(INPUT_POST);
-	foreach ($request as $k=> $v) {
-		$request[$k]=trim($v);
-		}		
-	if (!validateInput) {
-		echo "Wrong";
+	$request=filter_input_array(INPUT_POST);
+	
+	//' Or ''='
+	$validator = new validateInput($request);
+	$validator->validate();
+		
+	if (!empty($validator->errors)) {
+		$_SESSION["editItem"]=$request;
+		$_SESSION["editItemErrors"]=$errors;  
 		}
 	else {
-		print_r($request);
+		$_SESSION["editItem"]=$request;
+		$_SESSION["updateProcced"]=TRUE;
+		unset($_SESSION["editItemErrors"]);
 	}
 	
 	

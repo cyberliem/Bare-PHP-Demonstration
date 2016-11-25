@@ -14,21 +14,21 @@ class DBConnect{
     protected $dbc;
     
     public function __construct($args) {
-        $this->args=$args;
+        
         //create PDO object
         $this->dbc = new PDO("mysql:host=$this->Host;dbname=$this->Name", $this->User, $this->Password);
         $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           
+        $this->args=$args;
     }
     
     public function validateLogin() {
 		$username=$this->args["username"];
 		$pass=$this->args["pass"]; 
-                $sttstr="SELECT userID, firstname,surname,passwordHash FROM te_users WHERE username='$username'";
+        $sttstr="SELECT userID, firstname,surname,passwordHash FROM te_users WHERE username=:username";
+        echo $sttstr;
 		$stmt= $this->dbc->prepare($sttstr); 
-        //if the table is sent
-        // $stmt->bindParam(':s', $temp, PDO::PARAM_INT);
-        $temp=1;
-        $stmt->execute();
+        $stmt->execute(['username'=>$username]);
         
         $result= $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
         if (password_verify($pass, $result["passwordHash"])) {
@@ -44,16 +44,16 @@ class DBConnect{
 		
     public function updateStatement($k, $v, $mode) {
 		if ($mode==1) {
-			return ($k. " = '".$v."' AND");
+			return ($k. " = :".$k." AND");
 			}
 		else if ($mode=2) {
-			return ($k. " LIKE "."'%".$v."%'"." AND");
+			return ($k. " LIKE :".$k." AND");
 			}	
 		else return(" AND");	
 		}
     
     public function getEvents() {
-        $sttstr="SELECT eventID, eventTitle, venueName, location, te_events.catID, te_events.venueID, catDesc, eventDescription, eventStartDate, eventEndDate, eventPrice ";
+        $sttstr="SELECT *";
         $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";
         $sttstr.="JOIN te_venue ON te_events.venueID=te_venue.venueID ";
         $mode=1;
@@ -70,13 +70,15 @@ class DBConnect{
            
         }
         $sttstr.="ORDER BY eventTitle ASC";
-        //echo($sttstr);               
         $stmt= $this->dbc->prepare($sttstr); 
         //if the table is sent
               
-        
         // $stmt->bindParam(':s', $temp, PDO::PARAM_INT);
-        $temp=1;
+        if ($mode==2) {
+			foreach ($this->args as $k=>$v) {
+					$this->args[$k]="%".$v."%";
+				}
+			}
         $stmt->execute($this->args);
         
         $result= $stmt->fetchAll(PDO::FETCH_ASSOC);

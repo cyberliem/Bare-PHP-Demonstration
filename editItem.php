@@ -92,12 +92,17 @@ else {
                     </div>
                     
                     <div class="form-group">
-                      <label class="col-md-2 control-label" for="venue">Category</label>
+                      <label class="col-md-2 control-label" for="category">Category</label>
                       <div class="col-md-7">
-                        <select id="venue" name="venue" value="'.$item["catID"].'" class="form-control">';
+                        <select id="category" name="category" value="'.$item["catID"].'" class="form-control">';
                         foreach ($cats as $cat) {
-                            
-                            echo '<option value="'.$cat["catID"].'">'.$cat["catDesc"].'</option>';
+                            if ($cat["catID"]==$item["catID"]) {
+								$selected="selected";
+								}
+							else {
+								$selected="";
+								}	
+                            echo '<option '.$selected.' value="'.$cat["catID"].'">'.$cat["catDesc"].'</option>';
                         }          
                        echo '  
                         </select>
