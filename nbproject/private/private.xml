@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/loggedIn.php</file>
-            <file>file:/var/www/html/index.php</file>
-            <file>file:/var/www/html/searchResult.php</file>
-            <file>file:/var/www/html/api.php</file>
-            <file>file:/var/www/html/logIn.php</file>
-            <file>file:/var/www/html/index.html</file>
-            <file>file:/var/www/html/API/API.class.php</file>
+            <file>file:/var/www/html/admin/confirmUpdate.php</file>
+            <file>file:/var/www/html/admin/editItem.php</file>
+            <file>file:/var/www/html/admin/update.php</file>
+            <file>file:/var/www/html/logonModules/logIn.php</file>
         </group>
     </open-files>
 </project-private>

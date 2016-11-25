@@ -22,7 +22,9 @@ if (!isset($_GET['itemID'])) {
     echo "<h3> This item is not on our database </h3>";
 }
 if (!isset($_SESSION["userName"])) {
-    
+     echo'<div class="alert alert-danger">
+            You should not be here. Please log in first.
+          </div>';
 }
 else {
 	if (empty($_SESSION["editItem"])) {
@@ -110,7 +112,7 @@ else {
 								$selected="";
 								}	
                             echo '<option '.$selected.' value="'.$cat["catID"].'">'.$cat["catDesc"].'</option>';
-                        }          
+                        }           
                        echo '  
                         </select>
                       </div>

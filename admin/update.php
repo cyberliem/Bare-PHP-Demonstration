@@ -11,8 +11,11 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 session_start();
-if (empty($_SESSION["userName"])) {
-	die("You shouldn't be here");
+if (empty($_SESSION["userName"])) { 
+        echo'<div class="alert alert-danger">
+                    You should not be here. Please log in first.
+            </div>';
+           die;
 	}
 include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
 
@@ -23,8 +26,8 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/admin/validateInput.php');
 $errors=array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
-	//filter 
+    
+     	//basic filter. 
 	$request=filter_input_array(INPUT_POST);
 	
 	//' Or ''='
@@ -37,8 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	else {
 		$_SESSION["editItem"]=$request;
+                unset($_SESSION["editItemErrors"]);
 		$_SESSION["updateProcced"]=TRUE;
-		unset($_SESSION["editItemErrors"]);
+                header('Location: /admin/confirmUpdate.php'); 
+		
 	}
 	
 	
