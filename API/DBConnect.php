@@ -22,33 +22,22 @@ class DBConnect{
         $this->args=$args;
     }
     
-       public function updateStatement($k, $v, $mode) {
-		if ($mode==1) {
-			return ($k. " = :".$k." AND");
-			}
-		else if ($mode=2) {
-			return ($k. " LIKE :".$k." AND");
-			}	
-		else return(" AND");	
-		}
-		
-		
     public function updateEvent() {
+		unset($this->args["update"]);
 		$sttstr="UPDATE te_events SET";
 		foreach ($this->args as $k=>$v) {
-			$sttstr.=" ".$k."= :".$k;
+			$sttstr.=" ".$k."=:".$k.",";
 			}
-		$sttstr.=" WHERE eventID= :eventID";	
-		$stmt= $this->dbc->perpare($sttstr);
-		$stmt->execute($this->args);
-		$result= $stmt->fetchColumn();
-		return($result);
+		$sttstr=substr($sttstr, 0, -1)." WHERE eventID=:eventID";
+		$stmt= $this->dbc->prepare($sttstr);
+		return($stmt->execute($this->args));
 		}
+		
     public function validateLogin() {
 		$username=$this->args["username"];
 		$pass=$this->args["pass"]; 
         $sttstr="SELECT userID, firstname,surname,passwordHash FROM te_users WHERE username=:username";
-        $stmt= $this->dbc->prepare($sttstr); 
+      	$stmt= $this->dbc->prepare($sttstr); 
         $stmt->execute(['username'=>$username]);
         
         $result= $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
@@ -58,11 +47,19 @@ class DBConnect{
         else {
             $result=NULL;
         }
-      
-        //echo gettype($result);
         return($result);
     }
-     
+		
+    public function updateStatement($k, $v, $mode) {
+		if ($mode==1) {
+			return ($k. " = :".$k." AND");
+			}
+		else if ($mode=2) {
+			return ($k. " LIKE :".$k." AND");
+			}	
+		else return(" AND");	
+		}
+    
     public function getEvents() {
         $sttstr="SELECT *";
         $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";

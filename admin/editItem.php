@@ -10,13 +10,14 @@
    
 
 session_start();
+
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
 include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
 
 require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
-require_once($_SERVER["DOCUMENT_ROOT"] .'/admin/validateInput.php');
+
 
 if (!isset($_GET['itemID'])) {
     echo "<h3> This item is not on our database </h3>";
@@ -44,8 +45,7 @@ else {
             <fieldset>
                 <legend class="item-Title"> Editing Item:'.$item["eventTitle"]. '</legend>
                   
-
-                    
+                    <input type="hidden" name="eventID" value='.$_GET["itemID"].'> 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="eventTitle"> Event Title </label>  
                         <div class="col-md-7">
@@ -77,14 +77,15 @@ else {
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Description"> Event Price </label>  
                         <div class="col-md-7">
-                            <input id="eventPrice" name="eventPrice" type="number" value="'.$item["eventPrice"].'" class="form-control input-md">
+                            <input id="eventPrice" name="eventPrice" type="number" step=0.01 value="'.$item["eventPrice"].'" class="form-control input-md">
                         </div>
                     </div>
                     
                     <div class="form-group">
                       <label class="col-md-2 control-label" for="venue">Venue</label>
                       <div class="col-md-7">
-                        <select id="venue" name="venue" value="'.$item["venueID"].'" class="form-control">';
+                        <select id="venueID" name="venueID" value="'.$item["venueID"].'" class="form-control">';
+                        
                         foreach ($venues as $venue) {
                             if ($venue["venueID"]==$item["venueID"]) {
 								$selected="selected";
@@ -103,7 +104,7 @@ else {
                     <div class="form-group">
                       <label class="col-md-2 control-label" for="category">Category</label>
                       <div class="col-md-7">
-                        <select id="category" name="category" value="'.$item["catID"].'" class="form-control">';
+                        <select id="catID" name="catID" value="'.$item["catID"].'" class="form-control">';
                         foreach ($cats as $cat) {
                             if ($cat["catID"]==$item["catID"]) {
 								$selected="selected";

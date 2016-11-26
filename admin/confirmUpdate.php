@@ -17,17 +17,42 @@ if (!isset($_SESSION['editItem'])) {
                 Something is not right.
               </div>';
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+	$tryPut=put_item($_SERVER['SERVER_NAME'].'/api.php?endpoint=putItem');
+	if ($tryPut) {
+		$itemID=$_SESSION['editItem']['eventID'];
+		unset($_SESSION['editItem']);
+		unset($_SESSION['items']);	
+		header('Location: /viewItem.php?itemID='.$itemID.'&success=1'); 
+		}
+	} 
 else {  
     
     $item=$_SESSION['editItem'];
+    $venue=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue&venueID='.$item["venueID"])[0];
+	$item["venueName"]=$venue["venueName"]; 
+	$item["location"]=$venue["location"];
+    $item["catDesc"]=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat&catID='.$item["catID"])[0]["catDesc"];
+    $cats=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat');
+  
        echo'<div class="alert alert-warning">
             Please double check your data before confirm the update.
             (Some of the input has been sanitized for security purpose).
           </div>';
     //start the form
-    echo ' <form class="form-horizontal" method="GET">
+    echo ' <form class="form-horizontal" method="POST">
             <fieldset>
-                <legend class="item-Title">'.$item["eventTitle"]. '</legend>
+            
+                <legend class="item-Title">'."Confirm update". '</legend>
+                
+                <div class="form-group">
+                <label class="col-md-4 control-label" for="Content">Event Title</label>  
+                    <div class="col-md-4 form-inside">
+                        '.$item["eventTitle"] .'
+                    </div>
+                </div>
+                
+                
                 <div class="form-group">
                 <label class="col-md-4 control-label" for="Content">Venue Name</label>  
                     <div class="col-md-4 form-inside">
@@ -87,5 +112,5 @@ else {
         </form>';
 }
 echo '</div> </div>';        
-include ('includes/footer.html');
+include ($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
 ?>  

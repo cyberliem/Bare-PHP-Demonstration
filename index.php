@@ -20,6 +20,7 @@ if ((!empty($_SESSION['items'])) && (array_key_exists('error', $_SESSION['items'
 
 if (empty($_SESSION['items'])) 
 {    //call API
+	
     $items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view');
     //retain values in session
     $_SESSION['items']=$items;

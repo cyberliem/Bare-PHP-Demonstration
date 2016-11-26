@@ -22,8 +22,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/cleanInput.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/includes/DBConnect.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/admin/validateInput.php');
-$errors=array();
+require_once($_SERVER["DOCUMENT_ROOT"] .'/admin/validateInput.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
@@ -42,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION["editItem"]=$request;
                 unset($_SESSION["editItemErrors"]);
 		$_SESSION["updateProcced"]=TRUE;
-                header('Location: /admin/confirmUpdate.php'); 
+        header('Location: /admin/confirmUpdate.php'); 
 		
 	}
 	

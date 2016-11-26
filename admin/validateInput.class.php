@@ -68,7 +68,7 @@ class validateInput {
 		$dataArray=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view'.$APItag);
 		$validateControl=False;
 		foreach ($dataArray as $data) {
-			if ($data[$defined.'ID']==$input) {
+			if ($data[$defined]==$input) {
 				$validateControl=True;
 				}
 			} 
@@ -84,8 +84,8 @@ class validateInput {
 			}
 		$this->validateDate($this->request["eventStartDate"],$this->request["eventEndDate"]); 
 		$this->validatePrice($this->request["eventPrice"]);
-		$this->validateDefinedInput($this->request["venue"], "venue", "Venue");
-		$this->validateDefinedInput($this->request["category"], "cat", "Cat");
+		$this->validateDefinedInput($this->request["venueID"], "venueID", "Venue");
+		$this->validateDefinedInput($this->request["catID"], "catID", "Cat");
 		print_r($this->errors);
 		if (!empty($this->errors)) {
 			return(FALSE);

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Bare-PHP-Demonstration
 PHP Demonstration, without any framework.
 
@@ -9,4 +9,4 @@ Here, the concept of server-client is demonstrated, as well as API creation/call
 If you have some improvement or some issue in understanding the code, feel free to comment here.  
 =======
 # Bare-PHP-Demonstration
->>>>>>> 4f51be74212c5728cb2cce8e48c36704ad6270b9
+

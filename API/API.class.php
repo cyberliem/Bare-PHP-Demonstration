@@ -11,7 +11,7 @@
  *
  * @author root
  */
-require_once 'includes/DBConnect.php';
+require_once ($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
 require_once ("API/cleanInput.php");
 abstract class API {
     /**
@@ -31,12 +31,7 @@ abstract class API {
      * or /<endpoint>/<arg0>
      */
     protected $args = Array();
-    /**
-     * Property: file
-     * Stores the input of the PUT request
-     */
-     protected $file = Null;
-
+	protected $file;
     /**
      * Constructor: __construct
      * Set eader to allow CORS
@@ -59,7 +54,7 @@ abstract class API {
             }
         }
         
-        //cleanInput
+        //Define Method and cleanInput
         switch($this->method) {
         case 'DELETE':
         case 'POST':
@@ -70,7 +65,8 @@ abstract class API {
             break;
         case 'PUT':
             $this->request = cleanInputs($_GET);
-            $this->file = file_get_contents("php://input");
+            parse_str(file_get_contents("php://input"),$this->file );
+            //$this->file=file_get_contents("php://input");
             break;
         default:
             $this->_response('Invalid Method', 405);
@@ -88,6 +84,11 @@ abstract class API {
         $query=new DBConnect($args);
         return($query->getEvents());
     }
+    
+    private function putItem() {
+		$query=new DBConnect($this->file);
+		return($query->updateEvent());
+	}
     
     private function viewVenue($args) {
         $query=new DBConnect($args);

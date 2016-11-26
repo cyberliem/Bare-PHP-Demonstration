@@ -12,6 +12,7 @@
 
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+session_start();
 
 include('includes/header.html');
 
@@ -25,6 +26,11 @@ if (!isset($_GET['itemID'])) {
 else {
     $items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
     $item=$items[0];
+    if (isset($_GET['success'])) {
+		  echo'<div class="alert alert-success">
+                The item has been edited. You may review the item bellow.
+              </div>';
+		}
     //start the form
     echo ' <form class="form-horizontal" method="GET">
             <fieldset>
