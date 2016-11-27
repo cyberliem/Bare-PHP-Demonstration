@@ -1,5 +1,5 @@
 <?php 
-    require_once('API/MyAPI.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'/API/MyAPI.php');
     //initialized $request as empty
     $request=NULL;
     ini_set('display_errors', 1);

@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 include($_SERVER["DOCUMENT_ROOT"] .'/includes/adminNav.html');
 echo '
-<div class="row col-md-10">
+<div class="separated-line universal-block block-10">
 	<h2>
 		Welcome, '.$_SESSION['userName'].'.
 	</h2>

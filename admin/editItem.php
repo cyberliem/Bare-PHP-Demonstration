@@ -21,7 +21,7 @@ $errors=NULL;
 function displayErr($component){
 	
 	if (isset($_SESSION["editItemErrors"][$component])) {
-	     echo $_SESSION["editItemErrors"][$component];
+	     echo '<p style="color:red; margin-top:5px">'. $_SESSION["editItemErrors"][$component].'</p>';
 	}
 }
 
@@ -30,7 +30,7 @@ if (!isset($_GET['itemID'])) {
     echo "<h3> This item is not on our database </h3>";
 }
 if (!isset($_SESSION["userName"])) {
-     echo'<div class="alert alert-danger">
+     echo'<div class="message message-danger">
             You should not be here. Please log in first.
           </div>';
 }
@@ -52,15 +52,15 @@ else {
   
     //start the form
    
-    echo '<form action="update.php" class="form-horizontal" method="POST">
+    echo '<form action="update.php" class="form-box" method="POST">
             <fieldset>
                 <legend class="item-Title"> Editing Item:'.$item["eventTitle"]. '</legend>
                   
                     <input type="hidden" name="eventID" value='.$_GET["itemID"].'> 
                     
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="eventTitle"> Event Title </label>  
-                        <div class="col-md-7">
+                        <label class="universal-block block-2 box-label" for="eventTitle"> Event Title </label>  
+                        <div class="universal-block block-7">
                             <input id="eventTitle" name="eventTitle" type="text" value="'.$item["eventTitle"].'" class="form-control input-md">
                         </div>';
                     displayErr("eventTitle");
@@ -68,8 +68,8 @@ else {
                     echo '</div>
                 
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Description"> Event Description </label>  
-                        <div class="col-md-7">
+                        <label class="universal-block block-2 box-label" for="Description"> Event Description </label>  
+                        <div class="universal-block block-7">
                             <input id="eventDescription" name="eventDescription" type="text" value="'.$item["eventDescription"].'" class="form-control input-md">
                         </div>';
                         displayErr("eventDescription");
@@ -77,8 +77,8 @@ else {
                     </div>
                     
                      <div class="form-group">
-                        <label class="col-md-2 control-label" for="Description"> Event Start Date </label>  
-                        <div class="col-md-7">
+                        <label class="universal-block block-2 box-label" for="Description"> Event Start Date </label>  
+                        <div class="universal-block block-7">
                             <input id="eventStartDate" name="eventStartDate" type="date" value="'.$item["eventStartDate"].'" class="form-control input-md">
                         </div>';
                         displayErr("eventStartDate");
@@ -86,8 +86,8 @@ else {
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="eventEndDate"> Event End Date </label>  
-                        <div class="col-md-7">
+                        <label class="universal-block block-2 box-label" for="eventEndDate"> Event End Date </label>  
+                        <div class="universal-block block-7">
                             <input id="eventEndDate" name="eventEndDate" type="date" value="'.$item["eventEndDate"].'" class="form-control input-md">
                         </div>';
                         displayErr("eventEndDate");
@@ -95,8 +95,8 @@ else {
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Description"> Event Price </label>  
-                        <div class="col-md-7">
+                        <label class="universal-block block-2 box-label" for="Description"> Event Price </label>  
+                        <div class="universal-block block-7">
                             <input id="eventPrice" name="eventPrice" type="number" step=0.01 value="'.$item["eventPrice"].'" class="form-control input-md">
                         </div>';
                         displayErr("eventPrice");
@@ -104,8 +104,8 @@ else {
                     </div>
                     
                     <div class="form-group">
-                      <label class="col-md-2 control-label" for="venue">Venue</label>
-                      <div class="col-md-7">
+                      <label class="universal-block block-2 box-label" for="venue">Venue</label>
+                      <div class="universal-block block-7">
                         <select id="venueID" name="venueID" value="'.$item["venueID"].'" class="form-control">';
                         
                         foreach ($venues as $venue) {
@@ -126,8 +126,8 @@ else {
                     
                  
                     <div class="form-group">
-                      <label class="col-md-2 control-label" for="category">Category</label>
-                      <div class="col-md-7">
+                      <label class="universal-block block-2 box-label" for="category">Category</label>
+                      <div class="universal-block block-7">
                         <select id="catID" name="catID" value="'.$item["catID"].'" class="form-control">';
                         foreach ($cats as $cat) {
                             if ($cat["catID"]==$item["catID"]) {
@@ -146,9 +146,9 @@ else {
                     </div>
                     
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="update"></label>
-                            <div class="col-md-4">
-                                <button id="update" name="update" class="btn btn-primary">Update</button>
+                        <label class="universal-block block-4 box-label" for="update"></label>
+                            <div class="universal-block block-4">
+                                <button id="update" name="update" class="button button-primary">Update</button>
                             </div>
                     </div>
         </fieldset>

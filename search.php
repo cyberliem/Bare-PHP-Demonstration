@@ -32,16 +32,16 @@ if (isset($_SESSION['userName'])) {
 }
 //initiate 
 
-echo '<div class="row col-md-10">
-	  <form action="searchResult.php" class="form-horizontal" method="GET">
+echo '<div class="row universal-block block-10">
+	  <form action="searchResult.php" class="form-box" method="GET">
       <fieldset>
-        <legend class="item-Title">Search</legend>';
+        <legend class="item-Title">Search for event</legend>';
 
 
 foreach ($searchFeatures as $k => $v) {
    echo '<div class="form-group">
-            <label class="col-md-4 control-label" for="'.$v .'">'. $k .'</label>  
-            <div class="col-md-4">
+            <label class="universal-block block-4 box-label" for="'.$v .'">'. $k .'</label>  
+            <div class="universal-block block-4">
                 <input id="'.$v.'" name="'.$v.'" type="text" class="form-control input-md">
             </div>
         </div>';
@@ -49,8 +49,8 @@ foreach ($searchFeatures as $k => $v) {
 
 //display exact matched selection
 echo '<div class="form-group">
-  <label class="col-md-4 control-label" for="exact_matched">Exact Matched</label>
-  <div class="col-md-4">
+  <label class="universal-block block-4 box-label" for="exact_matched">Exact Matched</label>
+  <div class="universal-block block-4">
     <select id="exact_matched" name="exact_matched" value="2" class="form-control">
       <option value="2">Any</option>
       <option value="1">Exact</option>
@@ -60,9 +60,9 @@ echo '<div class="form-group">
 
 //display submit button and close the form 
 echo '<div class="form-group">
-        <label class="col-md-4 control-label" for="submit"></label>
-        <div class="col-md-4">
-            <button id="Ssubmit" name="Ssubmit" value=1 class="btn btn-primary">Search</button>
+        <label class="universal-block block-4 box-label" for="submit"></label>
+        <div class="universal-block block-4">
+            <button id="Ssubmit" name="Ssubmit" value=1 class="button button-primary">Search</button>
         </div>
       </div>
 

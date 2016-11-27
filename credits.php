@@ -7,14 +7,14 @@ ini_set('display_errors', 1);
 
 echo '
 
-<div class="row col-md-10">
+<div class="separated-line universal-block block-10">
   <legend class="item-Title"> About the author</legend>
   <div class="row">
-        <div class="col-md-2">
+        <div class="universal-block block-2">
             <img src="/Images/Liem.jpg"
-            alt="" class="img-rounded img-responsive" />
+            alt="Author" />
         </div>
-        <div class="col-md-4">
+        <div class="universal-block block-5">
             <blockquote>
                 <p>Liem Duc Nguyen</p> <small><cite title="Source Title">Bloody, Am I to do PHP again? </cite></small>
             </blockquote>
@@ -24,7 +24,7 @@ echo '
                 <br /> <b>Phone</b> +6591221805
             </p>
         </div>
-         <div class="col-md-4">
+         <div class="universal-block block-5">
          
 			<blockquote>
                 <p>Who be this man?</p>
@@ -37,7 +37,7 @@ echo '
 
 echo '
 
-<div class="row col-md-10">
+<div class="separated-line universal-block block-10">
  
   <div class="row">
 		<h3>List of referrences for the concepts on this website</h3>

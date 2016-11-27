@@ -111,3 +111,23 @@
   background-color: #5bc0de;
   border-color: #46b8da;
 }
+
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+    display: block;
+  }
+  
+ 

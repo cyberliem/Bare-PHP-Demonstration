@@ -27,67 +27,67 @@ else {
     $items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
     $item=$items[0];
     if (isset($_GET['success'])) {
-		  echo'<div class="alert alert-success">
+		  echo'<div class="message message-success">
                 The item has been edited. You may review the item bellow.
               </div>';
 		}
     //start the form
-    echo ' <form class="form-horizontal" method="GET">
+    echo ' <form class="form-box" method="GET">
             <fieldset>
                 <legend class="item-Title">'.$item["eventTitle"]. '</legend>
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Venue Name</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Venue Name</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["venueName"] .'
                     </div>
                 </div>
                 
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Location</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Location</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["location"] .'
                     </div>
                 </div>
 
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Category</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Category</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["catDesc"] .'
                     </div>
                 </div>
                 
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Event Description</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Event Description</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["eventDescription"] .'
                     </div>
                 </div>
              
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Start Date</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Start Date</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["eventStartDate"] .'
                     </div>
                 </div>
                 
                  <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">End Date</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">End Date</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["eventEndDate"] .'
                     </div>
                 </div>
                 
                  <div class="form-group">
-                <label class="col-md-4 control-label" for="Content">Price</label>  
-                    <div class="col-md-4 form-inside">
+                <label class="universal-block block-4 box-label" for="Content">Price</label>  
+                    <div class="universal-block block-4 form-inside">
                         '.$item["eventPrice"] .'
                     </div>
                 </div>
                 
                 <div class="form-group">
-                <label class="col-md-4 control-label" for="submit"></label>
-                    <div class="col-md-4">
-                    <button id="submit" name="submit" class="btn btn-primary">Book Now</button>
+                <label class="universal-block block-4 box-label" for="submit"></label>
+                    <div class="universal-block block-4">
+                    <button id="submit" name="submit" class="button button-primary">Book Now</button>
                     </div>
                 </div>
         </fieldset>

@@ -1,3 +1,28 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background-color: #fff;
+    margin:0;
+}
+
 .universal-block {
   position: relative;
   min-height: 1px;
@@ -64,6 +89,10 @@ form-box .radio,
   margin-left: -15px;
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
+
 .form-box .box-label {
     padding-top: 7px;
     margin-bottom: 0;
@@ -75,4 +104,89 @@ form-box .radio,
   display: table;
   content: " ";
   clear: both;
+}
+
+.navigation {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navigation > li {
+  position: relative;
+  display: block;
+}
+.navigation > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.navigation > li > a:hover,
+.navigation > li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.navigation > li.disabled > a {
+  color: #777;
+}
+.navigation > li.disabled > a:hover,
+.navigation > li.disabled > a:focus {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+.navigation .open > a,
+.navigation .open > a:hover,
+.navigation .open > a:focus {
+  background-color: #eee;
+  border-color: #337ab7;
+}
+.navigation .navigation-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.navigation > li > a > img {
+  max-width: none;
+}
+.navigation-pills > li {
+  float: left;
+}
+.navigation-pills > li > a {
+  border-radius: 4px;
+}
+.navigation-pills > li + li {
+  margin-left: 2px;
+}
+.navigation-pills > li.active > a,
+.navigation-pills > li.active > a:hover,
+.navigation-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #337ab7;
+}
+.navigation-stacked > li {
+  float: none;
+}
+.navigation-stacked > li + li {
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+.navigation:after, .navigation:before {
+  display: table;
+  content: " ";
+  clear: both;    
+}
+
+
+.separated-line:before, .separated-line:after{
+	display: table;
+  content: " ";
+  clear: both;    
+}
+
+.separated-line {
+  margin-right: -15px;
+  margin-left: -15px;
 }

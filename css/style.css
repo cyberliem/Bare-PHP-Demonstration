@@ -8,7 +8,8 @@
 	text-align: center;
 	margin: auto;
 	background-color:#82B1FF;
-	font-family: Copperplate, "Copperplate Gothic Light", fantasy;;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-style: italic;
 }
 .thumbheadtruncate
 {   width: 90%;
@@ -86,9 +87,11 @@ table.fixed td:nth-of-type(4) {width:10%;}
 }
 
 .item-Title {
-    margin-left:25%;
+	margin-top:20px;
+    margin-left:30%;
     margin-right:25%;
     border: none;
+    font-weight: bold;
 }
 
 .info {
@@ -102,7 +105,15 @@ table.fixed td:nth-of-type(4) {width:10%;}
 padding-bottom: 7px;
 }
 
+.navigation {
+border: 1px solid #82b1ff !important;
+box-shadow: 1px 1px grey !important;
+}
 .nav {
-border: 1px solid #82b1ff;
-box-shadow: 1px 1px grey;
+border: 1px solid #82b1ff !important;
+box-shadow: 1px 1px grey !important;
+}
+
+.footer-list ul{
+	margin-top:0;
 }

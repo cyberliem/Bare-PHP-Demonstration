@@ -1,36 +1,25 @@
     <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of API
+ * API for Tyne Event database.
  *
- * @author root
+ * @Cyberliem
  */
 require_once ($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
 require_once ($_SERVER["DOCUMENT_ROOT"] ."/API/cleanInput.php");
+
+
 abstract class API {
-    /**
-     * Property: method
-     * The HTTP method this request was made in, either GET, POST, PUT or DELETE
-     */
+    //The HTTP method this request was made in, either GET, POST, PUT or DELETE
     protected $method = '';
-    /**
-     * Property: endpoint
-     * The Model requested in the URI. eg: /files
-     */
+    
+    //The end point method to call to Database
     protected $endpoint = '';
-    /**
-     * Property: args
-     * Any additional URI components after the endpoint and table have been removed, in our
-     * case, an integer ID for the resource. eg: /<endpoint>/<table>/<arg0>/<arg1>
-     * or /<endpoint>/<arg0>
-     */
+    
+    //Any additional URI components act as arguments for API function
     protected $args = Array();
+	
+	//Additional arguments for PUT request.
 	protected $file;
     /**
      * Constructor: __construct

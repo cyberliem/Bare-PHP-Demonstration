@@ -36,8 +36,8 @@ if (isset($_SESSION['userName'])) {
 //include("includes/searchBar.html");
 echo '<legend class="item-Title"> Welcome to our events directory</legend>';
 if (isset($_SESSION['userName'])) {
-		echo '<div class="row col-md-10 info">
-			Click on edit button on any row to start editing the event, or <a href="/search.php">search</a> for a particular event to edit.
+		echo '<div class="separated-line universal-block block-10 info">
+			Click on edit button on any line to start editing the event, or <a href="/search.php">search</a> for a particular event to edit.
 			
 			
 		  </div>';
