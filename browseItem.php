@@ -1,8 +1,8 @@
     <!DOCTYPE html>
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
+require_once('API/callAPI.php');
 session_start();
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
+include('includes/header.html');
 ini_set('display_errors', 1);
 
 if (isset($_SESSION['previous'])) {
@@ -29,14 +29,24 @@ if (empty($_SESSION['items']))
 else {
     $items=$_SESSION['items'];
 }
+if (isset($_SESSION['userName'])) {
+	include($_SERVER["DOCUMENT_ROOT"] .'/includes/adminNav.html');
+}
+
+//include("includes/searchBar.html");
+echo '<legend class="item-Title"> Welcome to our events directory</legend>';
+if (isset($_SESSION['userName'])) {
+		echo '<div class="row col-md-10 info">
+			Click on edit button on any row to start editing the event, or <a href="/search.php">search</a> for a particular event to edit.
+			
+			
+		  </div>';
+}		  
+include("displayResult.php");
+		  
 
 
-include($_SERVER["DOCUMENT_ROOT"]."/includes/thumbnails.html");
-include($_SERVER["DOCUMENT_ROOT"]."/includes/intro.html");
-
-
-        
-include ($_SERVER["DOCUMENT_ROOT"].'/includes/footer.html');
+include ('includes/footer.html');
 $_SESSION['previous'] = basename($_SERVER['PHP_SELF']);
 
 ?>  

@@ -12,7 +12,7 @@
  * @author root
  */
 require_once ($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
-require_once ("API/cleanInput.php");
+require_once ($_SERVER["DOCUMENT_ROOT"] ."/API/cleanInput.php");
 abstract class API {
     /**
      * Property: method

@@ -86,7 +86,7 @@ class validateInput {
 		$this->validatePrice($this->request["eventPrice"]);
 		$this->validateDefinedInput($this->request["venueID"], "venueID", "Venue");
 		$this->validateDefinedInput($this->request["catID"], "catID", "Cat");
-		print_r($this->errors);
+		
 		if (!empty($this->errors)) {
 			return(FALSE);
 			}

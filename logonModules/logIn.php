@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
 
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/includes/DBConnect.php');
+require_once($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$request=(filter_input_array(INPUT_POST));

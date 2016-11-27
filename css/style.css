@@ -4,8 +4,15 @@
     text-align: left;
 }
 
+.page-header {
+	text-align: center;
+	margin: auto;
+	background-color:#82B1FF;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;;
+}
 .thumbheadtruncate
 {   width: 90%;
+	height: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,6 +30,24 @@
    margin-bottom: 10px;
    float: right;
    
+}
+
+.footer {
+	margin:auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #82B1FF;
+}
+
+.footer ul {
+	list-style-type: none;
+}
+
+.footer ul li {
+	float:left;
+	margin-right: 10px;
 }
 
 .thumbnailImg img{
@@ -63,9 +88,21 @@ table.fixed td:nth-of-type(4) {width:10%;}
 .item-Title {
     margin-left:25%;
     margin-right:25%;
-    
+    border: none;
+}
+
+.info {
+ margin-top:0px;
+ margin-bottom:10px;
+ font-style: italic;
+ 
 }
 
 .filter {
 padding-bottom: 7px;
+}
+
+.nav {
+border: 1px solid #82b1ff;
+box-shadow: 1px 1px grey;
 }

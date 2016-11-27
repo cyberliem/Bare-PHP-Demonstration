@@ -17,6 +17,13 @@ error_reporting(E_ALL);
 include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
 
 require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
+$errors=NULL;
+function displayErr($component){
+	
+	if (isset($_SESSION["editItemErrors"][$component])) {
+	     echo $_SESSION["editItemErrors"][$component];
+	}
+}
 
 
 if (!isset($_GET['itemID'])) {
@@ -28,15 +35,19 @@ if (!isset($_SESSION["userName"])) {
           </div>';
 }
 else {
+	if (!isset($_GET["error"])) {
+		unset ($_SESSION["editItem"]);
+		unset ($_SESSION["editItemErrors"]);
+		
+		}
 	if (empty($_SESSION["editItem"])) {
 			$items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
 			$item=$items[0];
-		}
+	}
     else {
 		$item=$_SESSION["editItem"]; 
-		if (!empty($_SESSION["errors"]));
-		}
-    $venues=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue');
+	}
+	$venues=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue');
     $cats=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat');
   
     //start the form
@@ -46,39 +57,50 @@ else {
                 <legend class="item-Title"> Editing Item:'.$item["eventTitle"]. '</legend>
                   
                     <input type="hidden" name="eventID" value='.$_GET["itemID"].'> 
+                    
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="eventTitle"> Event Title </label>  
                         <div class="col-md-7">
                             <input id="eventTitle" name="eventTitle" type="text" value="'.$item["eventTitle"].'" class="form-control input-md">
-                        </div>
-                    </div>
+                        </div>';
+                    displayErr("eventTitle");
+                        
+                    echo '</div>
                 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Description"> Event Description </label>  
                         <div class="col-md-7">
                             <input id="eventDescription" name="eventDescription" type="text" value="'.$item["eventDescription"].'" class="form-control input-md">
-                        </div>
+                        </div>';
+                        displayErr("eventDescription");
+                     echo'   
                     </div>
                     
                      <div class="form-group">
                         <label class="col-md-2 control-label" for="Description"> Event Start Date </label>  
                         <div class="col-md-7">
                             <input id="eventStartDate" name="eventStartDate" type="date" value="'.$item["eventStartDate"].'" class="form-control input-md">
-                        </div>
+                        </div>';
+                        displayErr("eventStartDate");
+                     echo'   
                     </div>
                     
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="eventEndDate"> Event End Date </label>  
                         <div class="col-md-7">
                             <input id="eventEndDate" name="eventEndDate" type="date" value="'.$item["eventEndDate"].'" class="form-control input-md">
-                        </div>
+                        </div>';
+                        displayErr("eventEndDate");
+                     echo'   
                     </div>
                     
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="Description"> Event Price </label>  
                         <div class="col-md-7">
                             <input id="eventPrice" name="eventPrice" type="number" step=0.01 value="'.$item["eventPrice"].'" class="form-control input-md">
-                        </div>
+                        </div>';
+                        displayErr("eventPrice");
+                     echo'   
                     </div>
                     
                     <div class="form-group">
@@ -97,7 +119,9 @@ else {
                         }          
                        echo '  
                         </select>
-                      </div>
+                      </div>';
+                        displayErr("venueID");
+                     echo'   
                     </div>
                     
                  
@@ -116,7 +140,9 @@ else {
                         }           
                        echo '  
                         </select>
-                      </div>
+                      </div>';
+                        displayErr("catID");
+                     echo'   
                     </div>
                     
                     <div class="form-group">
@@ -128,7 +154,7 @@ else {
         </fieldset>
         </form>';
 }
-    echo '</div> </div>';        
+       
     include ($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
 ?>  
     

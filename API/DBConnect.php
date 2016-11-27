@@ -52,15 +52,16 @@ class DBConnect{
 		
     public function updateStatement($k, $v, $mode) {
 		if ($mode==1) {
-			return ($k. " = :".$k." AND");
+			return ($k. " = :".$k." AND ");
 			}
 		else if ($mode=2) {
-			return ($k. " LIKE :".$k." AND");
+			return ($k. " LIKE :".$k." AND ");
 			}	
-		else return(" AND");	
+		else return(" AND ");	
 		}
     
     public function getEvents() {
+		unset($this->args["Ssubmit"]);
         $sttstr="SELECT *";
         $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";
         $sttstr.="JOIN te_venue ON te_events.venueID=te_venue.venueID ";
@@ -74,8 +75,8 @@ class DBConnect{
             foreach ($this->args as $k=>$v) {
 				$sttstr.= $this->updateStatement($k, $v, $mode);
             }
-            $sttstr= substr($sttstr, 0, -3);
-           
+            $sttstr= substr($sttstr, 0, -4);
+                       
         }
         $sttstr.="ORDER BY eventTitle ASC";
         $stmt= $this->dbc->prepare($sttstr); 
@@ -108,7 +109,7 @@ class DBConnect{
             foreach ($this->args as $k=>$v) {
 				$sttstr.= $this->updateStatement($k, $v, $mode);
             }
-            $sttstr= substr($sttstr, 0, -3);
+            $sttstr= substr($sttstr, 0, -4);
            
         }
         
@@ -138,7 +139,7 @@ class DBConnect{
             foreach ($this->args as $k=>$v) {
 				$sttstr.= $this->updateStatement($k, $v, $mode);
             }
-            $sttstr= substr($sttstr, 0, -3);
+            $sttstr= substr($sttstr, 0, -4);
            
         }
         
@@ -172,9 +173,9 @@ class DBConnect{
         if (!(empty($this->args))) {
             $sttstr.=" WHERE ";
             foreach ($this->args as $k=>$v) {
-                $sttstr.= $k. "= :".$k." AND";
+                $sttstr.= $k. "= :".$k." AND ";
             }
-            $sttstr= substr($sttstr, 0, -3);
+            $sttstr= substr($sttstr, 0, -4);
         }
         
   

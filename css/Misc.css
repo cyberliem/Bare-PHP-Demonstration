@@ -1,0 +1,113 @@
+.message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+.message > p,
+.message > ul {
+  margin-bottom: 0;
+}
+.message > p + p {
+  margin-top: 5px;
+}
+
+.message-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.message-success hr {
+  border-top-color: #c9e2b3;
+}
+
+.message-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.message-info hr {
+  border-top-color: #a6e1ec;
+}
+
+.message-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.message-warning hr {
+  border-top-color: #f7e1b5;
+}
+
+
+.message-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.message-danger hr {
+  border-top-color: #e4b9c0;
+}
+
+.button {
+  display: inline-block;
+  padding: 6px 6px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.button.focus {
+  color: #333;
+  text-decoration: none;
+}
+
+.button-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.button-default:focus,
+.button-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.button-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.button-default .badge {
+  color: #fff;
+  background-color: #333;
+}
+.button-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.button-primary:focus,
+.button-primary.focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+.button-primary:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+.button-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}

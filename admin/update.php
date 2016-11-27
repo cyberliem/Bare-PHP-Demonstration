@@ -21,7 +21,7 @@ include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
 
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/API/cleanInput.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/includes/DBConnect.php');
+require_once($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
 require_once($_SERVER["DOCUMENT_ROOT"] .'/admin/validateInput.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -35,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 	if (!empty($validator->errors)) {
 		$_SESSION["editItem"]=$request;
-		$_SESSION["editItemErrors"]=$errors;  
+		//print_r($request);
+		$_SESSION["editItemErrors"]=$validator->errors;  
+		header('Location: /admin/editItem.php?itemID='.$request["eventID"].'&error=1'); 
 		}
 	else {
 		$_SESSION["editItem"]=$request;

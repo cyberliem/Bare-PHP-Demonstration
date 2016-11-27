@@ -24,13 +24,18 @@ if (isset($_SESSION['previous'])) {
 	unset($_SESSION['items']);
    }
 }
-//reuse header
-include('includes/header.html');
 
+//reuse header
+include($_SERVER["DOCUMENT_ROOT"].'/includes/header.html');
+if (isset($_SESSION['userName'])) {
+	include($_SERVER["DOCUMENT_ROOT"] .'/includes/adminNav.html');
+}
 //initiate 
-echo '<form action="searchResult.php" class="form-horizontal" method="GET">
+
+echo '<div class="row col-md-10">
+	  <form action="searchResult.php" class="form-horizontal" method="GET">
       <fieldset>
-        <legend>Search</legend>';
+        <legend class="item-Title">Search</legend>';
 
 
 foreach ($searchFeatures as $k => $v) {
@@ -62,7 +67,8 @@ echo '<div class="form-group">
       </div>
 
     </fieldset>
-</form>';
+</form>
+</div>';
 
 include ('includes/footer.html');
 $_SESSION['previous'] = basename($_SERVER['PHP_SELF']);

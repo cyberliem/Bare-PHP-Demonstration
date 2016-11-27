@@ -7,9 +7,10 @@
  * Reachable at cyberliem.civil@gmail.com  * 
  */
 
-require_once('API/callAPI.php');
-require_once('API/cleanInput.php');
-include('includes/header.html');
+require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
+require_once($_SERVER["DOCUMENT_ROOT"].'/API/cleanInput.php');
+session_start();
+include($_SERVER["DOCUMENT_ROOT"].'/includes/header.html');
 
 function compareDate($criteriaDate, $eventDate, $choice) {
 	if (!empty($criteriaDate)) {
@@ -49,7 +50,6 @@ function filterItem($item, $criteria) {
 	return(TRUE);
 	}
 	
-session_start();
 if (isset($_SESSION['previous'])) {
    if (basename($_SERVER['PHP_SELF']) != $_SESSION['previous']) {
 	unset($_SESSION['items']);
@@ -81,14 +81,14 @@ else if ((isset($_GET["filter"])) &&($_GET["filter"]==1)) {
 			
 		$_SESSION["items"]=$items;
 		
-		include('includes/filter.html');
-		include('displayResult.php');
+		include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
+		include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
 		}	
 	}
 else if (!empty($_SESSION["items"])) {
 	$items=$_SESSION["items"];
-	include('includes/filter.html');
-    include('displayResult.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
+    include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
 	}
 else if ((!empty($_GET)) && (!isset($_GET["filter"]))) {
 	$request=(filter_input_array(INPUT_GET));
@@ -104,10 +104,11 @@ else if ((!empty($_GET)) && (!isset($_GET["filter"]))) {
     $items=get_items($url);
 	$_SESSION["searchStr"]=$url;
     $_SESSION["items"]=$items;
-    include('includes/filter.html');
-    include('displayResult.php');
+    include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
+    include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
 }
 $_SESSION['previous'] = basename($_SERVER['PHP_SELF']);
+ include($_SERVER['DOCUMENT_ROOT'].'/includes/footer.html');
 
 ?>
 <script type="text/javascript" src="/js/priceSlider.js"> </script>

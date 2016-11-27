@@ -6,15 +6,25 @@
  * It is owned by DUC LIEM NGUYEN  * 
  * Reachable at cyberliem.civil@gmail.com  * 
  */
+
+
+//set number of display
 $display=10;
 //set items to display each row:
 $rowDisplay=4;
-//start blocks of thumbnails
-//start blocks of thumbnails
+
 $nItems=0;
 //echo '<pre>' . print_r(get_defined_vars(), true) . '</pre>';
-for ($i=0; $i<count($items); $i++) {
+$temp=(count($items));
+
+
+if (($temp<=0) || (array_key_exists("error",$items))) {
+	echo "<p> There is no result matched your search</p>";
+	exit(0);
+	}
+for ($i=0; $i<$temp; $i++) {
 	if (!isset($items[$i]["display"])) {
+	
 		$items[$i]["display"]=TRUE;
 		$nItems++;
 	}
@@ -70,7 +80,8 @@ echo '</tr>
 $itemDisplay= min([$startPage*$display, $nItems]);
 $j=$startItem; 
 $i=0;
-while (($i<$itemDisplay) && ($j<count($items))) {
+
+while ((($startItem+$i)<$itemDisplay) && ($j<count($items))) {
     while (($j<count($items)) && ($items[$j]["display"]==FALSE))  {
 		$j++;
 		}
@@ -130,4 +141,3 @@ if ($nPages > 1) {
 	
 } // End of links section.
 
-echo '</div> </div>';
