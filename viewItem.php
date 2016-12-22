@@ -16,7 +16,7 @@ session_start();
 
 include('includes/header.html');
 
-require_once('API/callAPI.php');
+require_once('dbmodules/getData.php');
 
 
 
@@ -24,15 +24,16 @@ if (!isset($_GET['itemID'])) {
     echo "<h3> This item is not on our database </h3>";
 }
 else {
-    $items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
+	$request=array("endpoint"=>"view", "eventID"=>$_GET['itemID']);
+    $items=getData($request);
     $item=$items[0];
     if (isset($_GET['success'])) {
-		  echo'<div class="message message-success">
+	  echo'<div class="message message-success">
                 The item has been edited. You may review the item bellow.
               </div>';
 		}
     //start the form
-    echo ' <form class="form-box" method="GET">
+    echo ' <form class="form-box" method="GET" action="bookEventsForm.php">
             <fieldset>
                 <legend class="item-Title">'.$item["eventTitle"]. '</legend>
                 <div class="form-group">

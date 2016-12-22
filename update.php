@@ -13,8 +13,8 @@ error_reporting(E_ALL);
 session_start();
 include('includes/header.html');
 
-require_once('API/callAPI.php');
-require_once('includes/DBConnect.php');
+require_once('dbmodules/getData.php');
+require_once('dbmodules/DBConnect.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$request=(filter_input_array(INPUT_POST));
@@ -27,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// Store the HTTP_USER_AGENT:
 		$_SESSION['agent'] = md5($_SERVER['HTTP_USER_AGENT']);
 		// Redirect browser /
-		header('Location: /loggedIn.php'); 
+		header('Location: logonModules/loggedIn.php'); 
 		exit();
 		
 	}
 	else {
-		header('Location: /logon.php?error=1');
+		header('Location: logonModules/logon.php?error=1');
 	}
 }
 

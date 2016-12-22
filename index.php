@@ -8,9 +8,11 @@ include("includes/searchBar.html");
 include("includes/thumbnails.html");
 include("includes/intro.html");
 
+echo '<table id="hidTable" class="hidden table table-striped table-bordered fixed">
+      </table>';
 
         
-include ($_SERVER["DOCUMENT_ROOT"].'/includes/footer.html');
+include ('includes/footer.html');
 $_SESSION['previous'] = basename($_SERVER['PHP_SELF']);
 
 ?>  

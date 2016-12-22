@@ -1,6 +1,6 @@
     <!DOCTYPE html>
 <?php
-require_once('API/callAPI.php');
+require_once('dbmodules/getData.php');
 session_start();
 include('includes/header.html');
 ini_set('display_errors', 1);
@@ -20,8 +20,9 @@ if ((!empty($_SESSION['items'])) && (array_key_exists('error', $_SESSION['items'
 
 if (empty($_SESSION['items'])) 
 {    //call API
+	$request= array("endpoint"=>"view");
+	$items=(getData($request));
 	
-    $items=get_items('X');
     //retain values in session
     $_SESSION['items']=$items;
 }

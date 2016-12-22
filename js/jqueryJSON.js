@@ -3,7 +3,11 @@ $(document).ready(function () {
     $.ajax({
 		dataType: "json",
         method: "get",
-        url: "getOffers.php?useJSON=1"}
+        url: "getOffers.php",
+        data: {
+				useJSON:1
+			}
+        }
        )
        .done(function (data, status, request) {
 		    var JSONoffer=$('#JSONoffer ');

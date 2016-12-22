@@ -31,18 +31,40 @@ function get_items($url) {
 }
 
 function put_item($url) {
+	/* Function put_item create Database Object and access it 
+     * Rerturn: Array of decoded json
+     */	 
+
+	echo($url);
+    if (isset($_SESSION["editItem"])) {
+		$request=$_SESSION["editItem"];
+		
+		} 
+	$request["endpoint"]="putItem";
+
+	try {
+		$API = new API($request);
+	    return($API->processAPI());
+	} catch (Exception $e) {
+	    return( (Array('error' => $e->getMessage())));
+	}
+}
+
+
+
+function put_itemOLD($url) {
 	if (!strpos($url, 'http://')){
 		 $url='http://'.$url;
 		 } 
-	/* Function Get items will make an API call and return the json result
-     * Parameters: $url - string variable cointain the URL to call API
+	/* Function put_itemOLD send a PUT request to update database
+     * Don't use it if your server can't handle PUT request
      * Rerturn: Array of decoded json
      */	 
 
 	echo($url);
     if (isset($_SESSION["editItem"])) {
 		$data=$_SESSION["editItem"];
-	
+		
 		} 
 	$opts = array('http' =>
 	    array(

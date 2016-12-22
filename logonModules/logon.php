@@ -2,7 +2,7 @@
 //initiate 
 session_start();
 //reuse header
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
+include('../includes/header.html');
 
 
 if (isset($_SESSION["userName"])) {
@@ -11,7 +11,7 @@ if (isset($_SESSION["userName"])) {
         </div>';
 }
 else {
-    include($_SERVER["DOCUMENT_ROOT"] . '/includes/logon.html');
+    include('../includes/logon.html');
     if (isset($_GET["error"])) {
         echo'<div class="message message-danger">
             <strong>Invalid login details</strong> Please check your username/ password.
@@ -19,4 +19,4 @@ else {
     }
 }    
 echo '</div> </div>';
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
+include('../includes/footer.html');

@@ -13,10 +13,10 @@ session_start();
 
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+$upOne=realpath(dirname(__FILE__). '/..'); 
+include($upOne.'/includes/header.html');
 
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
-
-require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
+require_once($upOne.'/dbmodules/getData.php');
 $errors=NULL;
 function displayErr($component){
 	
@@ -41,14 +41,17 @@ else {
 		
 		}
 	if (empty($_SESSION["editItem"])) {
-			$items=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view&eventID='.$_GET['itemID']);
+			$request=array("endpoint"=>"view", "eventID"=>$_GET['itemID']);
+			$items=getData($request);
 			$item=$items[0];
 	}
     else {
 		$item=$_SESSION["editItem"]; 
 	}
-	$venues=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue');
-    $cats=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat');
+	$request=array("endpoint"=>"viewVenue");
+	$venues=getData($request);
+	$request=array("endpoint"=>"viewCat");
+    $cats=getData($request);
   
     //start the form
    
@@ -155,6 +158,6 @@ else {
         </form>';
 }
        
-    include ($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
+    include ($upOne.'/includes/footer.html');
 ?>  
     

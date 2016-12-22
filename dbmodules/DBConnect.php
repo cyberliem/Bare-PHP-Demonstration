@@ -20,11 +20,13 @@ class DBConnect{
         $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
            
         $this->args=$args;
+      
     }
     
     public function updateEvent() {
 		unset($this->args["update"]);
 		$sttstr="UPDATE te_events SET";
+		print_r($this->args);
 		foreach ($this->args as $k=>$v) {
 			$sttstr.=" ".$k."=:".$k.",";
 			}
@@ -57,12 +59,28 @@ class DBConnect{
 		else if ($mode=2) {
 			return ($k. " LIKE :".$k." AND ");
 			}	
+		else if ($mode=3) {
+			return ($k. " LIKE :".$k." OR  ");
+			}		
 		else return(" AND ");	
 		}
     
+    public function ranDomsearch($k) {
+		$sttstr="SELECT *";
+        $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";
+        $sttstr.="JOIN te_venue ON te_events.venueID=te_venue.venueID ";
+        $sttstr.="WHERE eventDescription LIKE :key OR eventTitle LIKE :key OR catDesc LIKE :key ";
+        $sttstr.="OR venueName LIKE :key OR location LIKE :key";
+        $stmt= $this->dbc->prepare($sttstr); 
+        $stmt->execute(["key"=>("%".$k."%")]);
+        $result= $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //echo gettype($result);
+        return($result);
+		}
+    //:key OR catDesc LIKE:key OR venueName LIKE:key OR location LIKE:key
     public function getEvents() {
 		unset($this->args["Ssubmit"]);
-        $sttstr="SELECT *";
+		$sttstr="SELECT *";
         $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";
         $sttstr.="JOIN te_venue ON te_events.venueID=te_venue.venueID ";
         $mode=1;

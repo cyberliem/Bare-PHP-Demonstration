@@ -7,10 +7,10 @@
  * Reachable at cyberliem.civil@gmail.com  * 
  */
 
-require_once($_SERVER["DOCUMENT_ROOT"].'/API/callAPI.php');
-require_once($_SERVER["DOCUMENT_ROOT"].'/API/cleanInput.php');
+require_once('dbmodules/getData.php');
+require_once('dbmodules/cleanInput.php');
 session_start();
-include($_SERVER["DOCUMENT_ROOT"].'/includes/header.html');
+include('includes/header.html');
 
 function compareDate($criteriaDate, $eventDate, $choice) {
 	if (!empty($criteriaDate)) {
@@ -81,34 +81,31 @@ else if ((isset($_GET["filter"])) &&($_GET["filter"]==1)) {
 			
 		$_SESSION["items"]=$items;
 		
-		include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
-		include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
+		include('includes/filter.html');
+		include('displayResult.php');
 		}	
 	}
 else if (!empty($_SESSION["items"])) {
 	$items=$_SESSION["items"];
-	include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
-    include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
+	include('includes/filter.html');
+    include('displayResult.php');
 	}
 else if ((!empty($_GET)) && (!isset($_GET["filter"]))) {
 	$request=(filter_input_array(INPUT_GET));
 	unset($request["Ssubmit"]);
     $request=cleanInputs($request);;   
+    $request["endpoint"]="view";
     $url=$_SERVER['SERVER_NAME'].'/api.php?endpoint=view';
     
-    foreach ($request as $k=>$v) {
-        if ($v!=NULL) {
-        $url.='&'.$k.'='.str_replace(' ', '+', $v);;
-        }
-    }
-    $items=get_items($url);
+    
+    $items=getData($request);
 	$_SESSION["searchStr"]=$url;
     $_SESSION["items"]=$items;
-    include($_SERVER['DOCUMENT_ROOT'].'/includes/filter.html');
-    include($_SERVER['DOCUMENT_ROOT'].'/displayResult.php');
+    include('includes/filter.html');
+    include('displayResult.php');
 }
 $_SESSION['previous'] = basename($_SERVER['PHP_SELF']);
- include($_SERVER['DOCUMENT_ROOT'].'/includes/footer.html');
+ include('includes/footer.html');
 
 ?>
 <script type="text/javascript" src="/js/priceSlider.js"> </script>

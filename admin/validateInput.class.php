@@ -65,7 +65,9 @@ class validateInput {
 		 * 			  $defined - the name of entity to validate
 		 *			  $APItag - the tag to query data rom Database
 		 */	
-		$dataArray=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=view'.$APItag);
+		$APItag="view".$APItag; 
+		$request=array("endpoint"=>$APItag);
+		$dataArray=getData($request);
 		$validateControl=False;
 		foreach ($dataArray as $data) {
 			if ($data[$defined]==$input) {

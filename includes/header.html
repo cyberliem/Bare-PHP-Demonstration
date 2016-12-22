@@ -13,15 +13,15 @@ and open the template in the editor.
 
     <title>Book Events</title>
     
-    <link href="css/buildingBlock.css" rel="stylesheet">
-    <link href="css/components.css" rel="stylesheet">
-    <link href="css/Misc.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    
+    <link href="../css/buildingBlock.css" rel="stylesheet">
+    <link href="../css/components.css" rel="stylesheet">
+    <link href="../css/Misc.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+       
     <!-- Jquery Libs-->
-    <link href="css/JqueryLibs/jquery-ui.css" rel="stylesheet">
-    <link href="css/JqueryLibs/jquery-ui.structure.css" rel="stylesheet">
-    <link href="css/JqueryLibs/jquery-ui.theme.css" rel="stylesheet">
+    <link href="../css/JqueryLibs/jquery-ui.css" rel="stylesheet">
+    <link href="../css/JqueryLibs/jquery-ui.structure.css" rel="stylesheet">
+    <link href="../css/JqueryLibs/jquery-ui.theme.css" rel="stylesheet">
 
   </head>
   <body>
@@ -36,33 +36,36 @@ and open the template in the editor.
             <div class="universal-block block-2">
                     <ul class="navigation navigation-tabs navigation-stacked">
                             <li>
-                                    <a href="/index.php">Home</a>
+                                    <a href="../index.php">Home</a>
                             </li>
                             <li>
-                                    <a href="/search.php">Search</a>
+                                    <a href="../search.php">Search</a>
                             </li>
                             <li >
-                                    <a href="/browseItem.php">Browse Items</a>
+                                    <a href="../browseItem.php">Browse events</a>
+                            </li>
+                             <li >
+                                    <a href="../bookEventsForm.php">Book events</a>
                             </li>
                             <?php if (!isset($_SESSION['userName'])) {
                                 echo '
                                     <li>
-                                        <a href="/logonModules/logon.php">Log in</a>
+                                        <a href="../logonModules/logon.php">Log in</a>
                                     </li>';
                                 }
                                 else {
                                 echo '
                                     <li>
-                                        <a href="/logonModules/logout.php">Log out</a>
+                                        <a href="../logonModules/logout.php">Log out</a>
                                     </li>';
                                 echo '
                                     <li>
-                                        <a href="/admin/adminModules.php">Admin Modules</a>
+                                        <a href="../admin/adminModules.php">Admin Modules</a>
                                     </li>';    
                                 }
                             ?>
                           <li >
-                               <a href="/credits.php">Credit</a>
+                               <a href="../credits.php">Credit</a>
                           </li>                                      
                     </ul>
             </div>

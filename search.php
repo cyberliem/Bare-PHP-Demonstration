@@ -26,9 +26,9 @@ if (isset($_SESSION['previous'])) {
 }
 
 //reuse header
-include($_SERVER["DOCUMENT_ROOT"].'/includes/header.html');
+include('includes/header.html');
 if (isset($_SESSION['userName'])) {
-	include($_SERVER["DOCUMENT_ROOT"] .'/includes/adminNav.html');
+	include('includes/adminNav.html');
 }
 //initiate 
 

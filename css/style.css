@@ -4,6 +4,72 @@
     text-align: left;
 }
 
+#wrapper h1 {
+	text-align:center;
+}
+
+#collection {
+float:left;
+width:50%;
+}
+
+#placeOrder {
+float:left;
+width:50%;
+}
+
+#retCustDetails{
+	margin-top:10px;
+}
+
+.item:before, .item:after{
+	display: table;
+	content: " ";
+    clear: both;    
+}
+
+.item {
+  border-bottom: 1px solid #82b1ff !important;
+  box-shadow: 1px  grey !important;
+}
+
+.eventTitle {
+	color:  #3a66d2;
+	width:30%;
+	float:left;
+}
+
+.eventStartDate {
+	width:10%;
+	float:left;
+}
+
+.eventEndDate {
+	width:10%;
+	float:left;
+}
+
+.catDesc {
+	width:10%;
+	float:left;
+}
+
+
+.venueName {
+	width:20%;
+	float:left;
+}
+
+.eventPrice {
+	width:10%;
+	float:left;
+}
+
+.chosen {
+	width:10%;
+	float:left;
+}
+
 .page-header {
 	text-align: center;
 	margin: auto;
@@ -29,6 +95,16 @@
     padding:10px;
 } 
 
+.item {
+display:block;
+}
+#hidTable {
+  width:30%;
+  margin-top:32px;
+  margin-left:49%;
+  border: 1px solid #82b1ff !important;
+  box-shadow: 1px 1px grey !important;
+}
 
 .hidden {
 	display: none;

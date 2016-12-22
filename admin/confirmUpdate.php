@@ -6,11 +6,11 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 session_start();
-include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
+$upOne=realpath(dirname(__FILE__). '/..'); 
+include($upOne. '/includes/header.html');
 
-require_once($_SERVER["DOCUMENT_ROOT"] .'/API/callAPI.php');
-
-
+require_once($upOne .'/API/callAPI.php');
+require_once($upOne .'/dbmodules/getData.php');
 
 if (!isset($_SESSION['editItem'])) {
         echo'<div class="message message-danger">
@@ -29,11 +29,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 else {  
     
     $item=$_SESSION['editItem'];
-    $venue=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewVenue&venueID='.$item["venueID"])[0];
+    $request=array("endpoint"=>"viewVenue", "venueID"=>$item["venueID"]);
+	$venue=getData($request)[0];
+	$request=array("endpoint"=>"viewCat", "catID"=>$item["catID"]);
+    $cat=getData($request)[0];
+    
 	$item["venueName"]=$venue["venueName"]; 
 	$item["location"]=$venue["location"];
-    $item["catDesc"]=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat&catID='.$item["catID"])[0]["catDesc"];
-    $cats=get_items($_SERVER['SERVER_NAME'].'/api.php?endpoint=viewCat');
+    $item["catDesc"]=$cat["catDesc"];
+    
   
        echo'<div class="message message-warning">
             Please double check your data before confirm the update.

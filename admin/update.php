@@ -17,12 +17,13 @@ if (empty($_SESSION["userName"])) {
             </div>';
            die;
 	}
-include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
+$upOne=realpath(dirname(__FILE__). '/..'); 
+include($upOne . '/includes/header.html');
 
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/cleanInput.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
-require_once($_SERVER["DOCUMENT_ROOT"] .'/admin/validateInput.class.php');
+require_once($upOne . '/dbmodules/getData.php');
+require_once($upOne . '/dbmodules/cleanInput.php');
+require_once($upOne . '/dbmodules/DBConnect.php');
+require_once($upOne .'/admin/validateInput.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
@@ -37,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION["editItem"]=$request;
 		//print_r($request);
 		$_SESSION["editItemErrors"]=$validator->errors;  
-		header('Location: /admin/editItem.php?itemID='.$request["eventID"].'&error=1'); 
+		header('Location: ../admin/editItem.php?itemID='.$request["eventID"].'&error=1'); 
 		}
 	else {
 		$_SESSION["editItem"]=$request;
                 unset($_SESSION["editItemErrors"]);
 		$_SESSION["updateProcced"]=TRUE;
-        header('Location: /admin/confirmUpdate.php'); 
+        header('Location: ../admin/confirmUpdate.php'); 
 		
 	}
 	
@@ -67,5 +68,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 echo '</div> </div>';        
-include ($_SERVER["DOCUMENT_ROOT"] . '/includes/footer.html');
+include ($upOne.'/includes/footer.html');
 ?>  
