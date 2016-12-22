@@ -10,11 +10,11 @@
    
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
+$upOne=realpath(dirname(__FILE__). '/..');
+include($upOne . '/includes/header.html');
 
-include($_SERVER["DOCUMENT_ROOT"] . '/includes/header.html');
-
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/callAPI.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/API/DBConnect.php');
+require_once($upOne . '/API/callAPI.php');
+require_once($upOne . '/API/DBConnect.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$request=(filter_input_array(INPUT_POST));
@@ -37,5 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 echo '</div> </div>';        
-include ('includes/footer.html');
+include ($upone.'/includes/footer.html');
 ?>  

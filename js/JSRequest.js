@@ -25,7 +25,10 @@ function createRequest() {
 }
 
 function getRequest( url, callbackFunction, configure ) {
-  'use strict';
+  /* GetREquest: pass in an url with its configure and a callback function
+   * make HTTP call to url using the configre.
+   * Once donce, execute the callbackFunction
+   */ 
   
   //create requestObjectfirst
   var httpRequest=createRequest(); 
@@ -75,9 +78,11 @@ function getRequest( url, callbackFunction, configure ) {
 
 
 var resetOffer = function () {
+	//set the reset Offer to 5000 milisecond (5 second)
 	getRequest('getOffers.php', printRequest, false);
 	setTimeout(resetOffer,5000);
 }
 
+//onload, call the request. 
 window.onload = resetOffer();
 

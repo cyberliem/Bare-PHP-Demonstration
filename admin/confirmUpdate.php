@@ -116,5 +116,5 @@ else {
         </form>';
 }
 echo '</div> </div>';        
-include ($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
+include ($upOne .'/includes/footer.html');
 ?>  

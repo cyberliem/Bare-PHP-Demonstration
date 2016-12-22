@@ -69,8 +69,7 @@ class DBConnect{
 		$sttstr="SELECT *";
         $sttstr.="FROM te_events JOIN te_category ON te_events.catID= te_category.catID ";
         $sttstr.="JOIN te_venue ON te_events.venueID=te_venue.venueID ";
-        $sttstr.="WHERE eventDescription LIKE :key OR eventTitle LIKE :key OR catDesc LIKE :key ";
-        $sttstr.="OR venueName LIKE :key OR location LIKE :key";
+        $sttstr.="WHERE eventTitle LIKE :key";
         $stmt= $this->dbc->prepare($sttstr); 
         $stmt->execute(["key"=>("%".$k."%")]);
         $result= $stmt->fetchAll(PDO::FETCH_ASSOC);

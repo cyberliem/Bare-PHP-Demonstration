@@ -1,6 +1,9 @@
-"use strict";
 
 var displayPrice= function(totalPrice) {
+	/* Display the Price to desired element.
+	 * totalPrice: a float if the price is calculated
+	 * NaN if the price isn't calculated.
+	 */
 	var displayString;
 	if (isNaN(totalPrice)) { 
 		displayString=totalPrice;
@@ -15,7 +18,7 @@ var collectionPrice= function () {
 	//get all the radio checkbox in Collection
 	var collectionChkbox=document.getElementById('collection').querySelectorAll('input[type=radio]');
 	
-	//star the loop
+	//star the loop, return if found the checked radio button
 	var i;
 	for (i=0; i<collectionChkbox.length; i++) {
 		if (collectionChkbox[i].checked) {
@@ -39,7 +42,7 @@ var updateChosenEvents= function()  {
 	//i: index for the loop; boxchecked: if there is at least one box checked.
 	var i, boxchecked=false;
 	
-	//start loop through every checkbox.
+	//start loop through every checkbox. Calculate the price and check if any box is check
 	for (i=0; i<eventsChkbox.length; i++) {
 		if (eventsChkbox[i].checked) {
 			eventsClicked.addEvent(eventsChkbox[i].value, eventsChkbox[i].title);
@@ -62,23 +65,30 @@ var updateChosenEvents= function()  {
 	}	
 };
 
-//entry to clicked event: select and collection will listen for any change.
+//entry to clicked event: add event lisnter
+//select and collection will listen for any change.
 document.getElementById('selectEvent').addEventListener("change", updateChosenEvents);
 document.getElementById('collection').addEventListener("change", updateChosenEvents);
+
+//eventsCLick: prototype java script object,
+//with its own method and data.
+//note that this function is executable-ready
 var eventsClicked = (function (){
+	//initiate events array empty
 	var events= {};
 	return {
+		//add event: initiate and append an event to the array
 		addEvent: function (id, eventPrice) {
 			events[id] = {
-				id:id,
+				id:id, 
 				price: parseFloat(eventPrice)
 			}
 		},
-		
+		//delete event from array
 		removeEvent: function (id) {
 			delete events[id];
 			},
-			
+		//total price: loop though all the event and calculate the price.	
 		totalPrice: function () {
 			var total =0;
 			var i;

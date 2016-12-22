@@ -1,10 +1,11 @@
 <?php
 
 session_start();
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/header.html');
+$upOne=realpath(dirname(__FILE__). '/..'); 
+include($upOne .'/includes/header.html');
 ini_set('display_errors', 1);
 
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/adminNav.html');
+include($upOne .'/includes/adminNav.html');
 echo '
 <div class="separated-line universal-block block-10">
 	<h2>
@@ -20,4 +21,4 @@ echo '
 	</p>
 </div>';
 
-include($_SERVER["DOCUMENT_ROOT"] .'/includes/footer.html');
+include($upOne.'/includes/footer.html');
