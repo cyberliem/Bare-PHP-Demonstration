@@ -1,0 +1,35 @@
+body {
+    font-family: arial, helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+nav ol {
+    padding: 0;
+}
+ 
+nav li {
+    list-style-type: none;
+}
+.important {
+    color: #05c;
+}
+
+section {  
+    /* make sections relative so that hiddenInfo can be absolute with this as its parent */
+    position: relative;
+}
+.hiddenInfo {
+    display: none;
+    width: 25%;
+    position: absolute;
+    top: 1px;
+    left: 25%;
+     
+    border: thin solid black;
+    padding: 0.5em 1em;
+    background-color: #fff;
+}

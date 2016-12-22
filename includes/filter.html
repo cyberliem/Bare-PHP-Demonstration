@@ -1,0 +1,77 @@
+<!--
+   filter.html
+   
+   Copyright 2016 Liem <cyberliem@CommandCenter>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+
+<div class="separate-line filter">
+	<form action="searchResult.php" method="GET">
+	<fieldset>	  
+
+	<div class="form-group">
+	    <div data-role="rangeslider "class="universal-block block-3">
+	        <label for="price-min">Minimum Price:</label>
+	        <span id="price-min" >0</span>
+	        <input type="range" name="price-min" id="price-min" value="0" min="0" max="1000" onchange="showMinValue(this.value)">
+	        <label for="price-max">Maximum Price:</label>
+	        <span id="price-max" >1000</span>
+	        <input type="range" name="price-max" id="price-max" value="1000" min="0" max="1000" onchange="showMaxValue(this.value)">
+	      </div>
+	</div>   
+
+	<div class="form-group">
+		<label class="universal-block block-1 box-label" for="datestart"> Start Date</label>  
+		<div class="universal-block block-3">
+			<select id="startChoice" name="startChoice" class="form-control" value=1>
+				<option value=1>Later than</option>
+				<option value=2>Earlier than</option>
+			</select>
+			<input id="dateStart" name="dateStart" type="date" class="form-control input-md">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="universal-block block-1 box-label" for="dateEnd"> End Date</label>  
+		<div class="universal-block block-3">
+			<select id="endChoice" name="endChoice" class="form-control" value=1>
+				<option value=1>Later than</option>
+				<option value=2>Earlier than</option>
+			</select>
+			<input id="dateEnd" name="dateEnd" type="date" class="form-control input-md">
+		</div>
+	</div>
+	
+	<div class="form-group">
+         <div class="universal-block block-1">
+		 <input type="hidden" name="filter" value=1>
+         <button id="submit" name="submit" class="button button-primary">Filter</button>
+		 </div>
+    </div>
+    
+    </fieldset>
+    </form>
+</div>
+

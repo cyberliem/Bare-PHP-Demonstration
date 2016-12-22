@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--> 
+<?php ini_set('memory_limit','256M');?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Book Events</title>
+    
+    <link href="css/buildingBlock.css" rel="stylesheet">
+    <link href="css/components.css" rel="stylesheet">
+    <link href="css/Misc.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Jquery Libs-->
+    <link href="css/JqueryLibs/jquery-ui.css" rel="stylesheet">
+    <link href="css/JqueryLibs/jquery-ui.structure.css" rel="stylesheet">
+    <link href="css/JqueryLibs/jquery-ui.theme.css" rel="stylesheet">
+
+  </head>
+  <body>
+  <div class="bodywarp">
+	<div class="row universal-block block-12 page-header">
+		<h1>
+			Tyne Events
+		</h1>
+    </div>
+      
+	<div class="separated-line ">
+            <div class="universal-block block-2">
+                    <ul class="navigation navigation-tabs navigation-stacked">
+                            <li>
+                                    <a href="/index.php">Home</a>
+                            </li>
+                            <li>
+                                    <a href="/search.php">Search</a>
+                            </li>
+                            <li >
+                                    <a href="/browseItem.php">Browse Items</a>
+                            </li>
+                            <?php if (!isset($_SESSION['userName'])) {
+                                echo '
+                                    <li>
+                                        <a href="/logonModules/logon.php">Log in</a>
+                                    </li>';
+                                }
+                                else {
+                                echo '
+                                    <li>
+                                        <a href="/logonModules/logout.php">Log out</a>
+                                    </li>';
+                                echo '
+                                    <li>
+                                        <a href="/admin/adminModules.php">Admin Modules</a>
+                                    </li>';    
+                                }
+                            ?>
+                          <li >
+                               <a href="/credits.php">Credit</a>
+                          </li>                                      
+                    </ul>
+            </div>
+            
+            <div class="universal-block block-10">

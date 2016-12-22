@@ -1,0 +1,130 @@
+.halfthumbnail {
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
+.page-header {
+	text-align: center;
+	margin: auto;
+	background-color:#82B1FF;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-style: italic;
+}
+.thumbheadtruncate
+{   width: 90%;
+	height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    margin-bottom: 4px;
+    padding-bottom: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.thumbnail {
+    border: 1px solid #82b1ff !important;
+    box-shadow: 1px 1px grey !important;
+    padding:10px;
+} 
+
+
+.hidden {
+	display: none;
+    position: absolute;
+    top: 1px;
+    width:100%;
+    border: thin solid black;
+    padding: 0.5em 1em;
+    background-color: #fff;	
+}
+
+.search-bar {
+   margin-bottom: 10px;
+}
+
+.footer {
+	margin:auto;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #82B1FF;
+    
+}
+
+.footer ul {
+	list-style-type: none;
+}
+
+.footer ul li {
+	float:left;
+	margin-right: 10px;
+}
+
+.thumbnailImg img{
+height:220px;
+min-height: 50%;
+max-height: 100%;
+max-width: 100%;
+margin: auto;
+display: block;
+}
+
+.thumbtruncate {
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pagination-block {
+  margin-left:auto;
+  margin-right:auto;
+  align-items: center;
+  justify-content: center;
+}
+
+table.fixed td:nth-of-type(1) {width:30%;}/*Setting the width of column 1.*/
+table.fixed td:nth-of-type(2) {width:15%;}/*Setting the width of column 2.*/
+table.fixed td:nth-of-type(3) {width:15%;}/*Setting the width of column 3.*/
+table.fixed td:nth-of-type(4) {width:10%;}
+table.fixed td:nth-of-type(5) {width:10%;}
+table.fixed td:nth-of-type(6) {width:10%;}
+table.fixed td:nth-of-type(4) {width:10%;}
+
+.form-inside {
+    padding-top:7px;
+}
+
+.item-Title {
+	margin-top:20px;
+	text-align: center;
+    border: none;
+    font-weight: bold;
+}
+
+.info {
+ margin-top:0px;
+ margin-bottom:10px;
+ font-style: italic;
+ 
+}
+
+.filter {
+padding-bottom: 7px;
+}
+
+.navigation {
+border: 1px solid #82b1ff !important;
+box-shadow: 1px 1px grey !important;
+}
+.nav {
+border: 1px solid #82b1ff !important;
+box-shadow: 1px 1px grey !important;
+}
+
+.footer-list ul{
+	margin-top:0;
+}
